@@ -1,7 +1,7 @@
 from django.shortcuts import (render, get_object_or_404 as G404)
-from apdev.core.classes import (PageElement as pe, PageLoad, ActivePageItems)
-from .models import (PageSkin as S, Blog as B, Info as In, Fileserve as F)
-from shop.models import Pageitem as P
+from core.classes import (PageElement as pe, PageLoad, ActivePageItems)
+#from apdev.core import (PageSkin as S, Pageitem as P)
+#from .models import (Offer as O, Info as In, Fileserve as F)
 from apdev.settings import LANGUAGES as L
 import pytz
 import datetime
@@ -9,14 +9,14 @@ import datetime
 
 # Strona główna.
 def home(request):
-    api = ActivePageItems(request, B, pytz, datetime)
-    active_blogs = api.active_items
+    api = ActivePageItems(request, O, pytz, datetime)
+    active_offers = api.active_items
     api = ActivePageItems(request, In, pytz, datetime)
     active_infos = api.active_items
     api = ActivePageItems(request, F, pytz, datetime)
     active_files = api.active_items
     context = {
-     'blogs': active_blogs,
+     'offers': active_offers,
      'infos': active_infos,
      'files': active_files,
     }

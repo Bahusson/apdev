@@ -45,4 +45,47 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-# Create your models here.
+
+# Klasa Głównych Elementów Strony
+class Pageitem(models.Model):
+    lang_flag = models.ImageField(upload_to='images')  # Mały obrazek języka
+    headtitle = models.CharField(max_length=200)  # Nagłówek strony w tym j
+    mainpage = models.CharField(max_length=200)  # Strona główna w tym języku
+    aboutus = models.CharField(max_length=200)  # Informacje w tym języku
+    offer = models.CharField(max_length=200)  # Mapa akademików w tym języku
+    contact = models.CharField(max_length=200)  # Kontakty w tym języku
+    gallery = models.CharField(max_length=200)  # Galeria
+    main_intro = models.TextField()  # Długie info na głównej
+    about_intro = models.TextField()  # Długie info na "o nas"
+    save_time = models.CharField(max_length=200)  # oszczędzaj czas
+    design = models.CharField(max_length=200)  # projektowanie
+    credit = models.CharField(max_length=200)  # kredyty
+    management = models.CharField(max_length=200)  # zarządzanie
+    remodelling = models.CharField(max_length=200)  # remonty
+    cookie_alert = models.CharField(max_length=200)  # ciastki
+    location = models.CharField(max_length=200)  # lokalizacja
+
+    def mainpage_c(self):
+        return self.mainpage.upper()
+
+
+# Klasa skórek do apki. Pola nienulowalne.
+class PageSkin(models.Model):
+    themetitle = models.CharField(max_length=200)
+    position = models.IntegerField()
+    offerimagedefault = models.ImageField(
+     upload_to='skins', blank=True, null=True)
+    infoimagedefault = models.ImageField(
+     upload_to='skins', blank=True, null=True)
+    serviceimagedefault = models.ImageField(
+     upload_to='skins', blank=True, null=True)
+    fileimagedefault = models.ImageField(
+     upload_to='skins', blank=True, null=True)
+    logo_main = models.ImageField(
+     upload_to='skins', blank=True, null=True)
+
+    class Meta:
+        ordering = ['position']
+
+    def __str__(self):
+        return self.themetitle
