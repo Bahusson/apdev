@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'x*q-zz=9ri@%m*a6lo=%&!h(6ryu3m++rz^9@anbeg)7&tzud-'
@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'apdev.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -83,7 +83,7 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,10 +127,10 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 # Dla sesji opartych na ciastkach:
 # "django.contrib.sessions.backends.signed_cookies"
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'pl'
 
@@ -197,7 +197,7 @@ AWS_DEFAULT_ACL = None
 # AWS_S3_CUSTOM_DOMAIN = 'https://apdev.fra1.cdn.digitaloceanspaces.com'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'apdev/static')
 ]
@@ -226,7 +226,7 @@ LOGIN_REQUIRED_IGNORE_PATHS = [
 
 # Mailing Django. Do podmianki w local_settings.py
 # https://www.tutorialspoint.com/django/django_sending_emails.htm
-# https://docs.djangoproject.com/en/2.2/topics/email/
+# https://docs.djangoproject.com/en/3.0/topics/email/
 EMAIL_HOST = 'localhost'
 
 EMAIL_HOST_USER = ''
