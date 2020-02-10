@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   {% block title %}
+    <title>{{ items.headtitle }}</title>
+   {% endblock %}
+   <!-- Czy meta też wrażliwe językowo? -->
+   <meta name="description" content="AP-DEVELOPER to profesjonalna firma zajmująca się: budowaniem bezczynszowych mieszkań w Markach, Oferujemy nowe mieszkania na sprzedaż marki, apartamenty Marki. Atrakcyjne ceny." />
+   <meta name="keywords" content="nowe mieszkania na sprzedaż marki" />
+   <!-- Czcionki -->
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+   <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <!-- Dodatkowy CSS -->
+   <link href="{% static 'style.css' %}" rel="stylesheet">
+   {% block css %}
+   {% endblock css %}
+</head>
+
+<body>
+ <br>
+  <div class="container">
+	 <header class="row">
+    <div class="col-lg-1 col-md-2 col-sm-1 col-xs-1" >
+      <a href="/"><img src="obrazki/logo_male.jpg" /></a>
+    </div>
+    <br>
+    <div class="col-lg-11 col-md-10 col-sm-11 col-xs-11 visible-lg visible-md">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+            <span class="sr-only">Nawigacja</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="collapse">
+        	<ul class="nav nav-pills nav-justified">
+            <li{% if home %} class="active" {% endif %} ><a href="{% url 'home' %}">Start</a></li>
+            <li{% if about %} class="active" {% endif %}><a href="">O nas</a></li>
+            <li{% if offer %} class="active" {% endif %}><a href="">Oferta</a></li>
+            <li{% if contact %} class="active" {% endif %}><a href="">Kontakt</a></li>
+    	      <li{% if gallery %} class="active" {% endif %}><a href="">Galeria</a></li>
+    			</ul>
+        </div>
+      </nav>
+     </div>
+    </header>
+	  <hr style="height: 3px; color: #474b4c; " />
+    <ol class="breadcrumb">
+      <li class="active">Start</li>
+      <li><a href="onas1.html">O nas</a></li>
+      <li><a href="oferta1.html">Oferta</a></li>
+      <li><a href="kontakt1.html">Kontakt</a></li>
+		  <li><a href="galeria/index.html">Galeria</a></li>
+		</ol>
+
+
+{% block body %}
+{% enblock body %}
+
+<!-- Po jednym elemencie dla każdej usługi -->
+  <div class="row">
+    {% for service in services %}
+      <div  class="col-lg-3 col-md-3 col-sm-3" >
+        <a href="{% url 'service' service.id %}"><img src="{{ service.image1.url }}" alt="{{ service.title }}" class="img-responsive"/></a>
+        <a href="{% url 'service' service.id %}" class="btn btn-default btn-lg btn-block" value="{{ service.title }}">
+      </div>
+    {% endfor %}
+  </div>
+  <hr style="height: 3px; color: #474b4c; " />
+
+  <!-- Do podmianki językowej elementy w alercie ciastkowym!!!-->
+  <!-- START Bootstrap-Cookie-Alert -->
+  <div class="alert text-center cookiealert" role="alert">
+      {{ items.cookiealert }}
+      <a href="" target="_blank">Dowiedz się więcej</a>
+      <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">Zgadzam się!</button>
+  </div>
+  <!-- END Bootstrap-Cookie-Alert -->
+
+
+<!-- To jest do podmianki na coś innego - zostawiam jako dane z punktem odniesienia!
+ <footer>
+  <div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+                <h4>Uwaga!</h4>
+        <h5> Ta strona używa plików „cookies”. <br /> Jeżeli nie wyraższ zgody na zapisywanie informacji zawartej w cookies, zmień ustawienia swojej przeglądarki.</h5>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+      <h4>+48  507 196 788</h4>
+      <h4>
+        <a href="mailto:biuro@apdeveloper.com.pl">
+        <span class="glyphicon glyphicon-envelope">biuro@apdeveloper.com.pl</a>
+      </h4>
+      <br/>
+      <img src="obrazki/projekt.jpg"  alt="" class="img-responsive" />
+    </div>
+  </div>
+  <br />
+ </footer>
+ -->
+
+ <!-- Bootstrap core JavaScript -->
+ <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ {% block scripts %}
+ {% endblock scripts %)
+</body>
+</html>
