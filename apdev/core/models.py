@@ -58,10 +58,6 @@ class Pageitem(models.Model):
     main_intro = models.TextField()  # Długie info na głównej
     about_intro = models.TextField()  # Długie info na "o nas"
     save_time = models.CharField(max_length=200)  # oszczędzaj czas
-    design = models.CharField(max_length=200)  # projektowanie
-    credit = models.CharField(max_length=200)  # kredyty
-    management = models.CharField(max_length=200)  # zarządzanie
-    remodelling = models.CharField(max_length=200)  # remonty
     cookie_alert = models.CharField(max_length=200)  # ciastki
     location = models.CharField(max_length=200)  # lokalizacja
 

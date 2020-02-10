@@ -14,7 +14,7 @@ class Offer(models.Model):
     file4 = models.FileField(upload_to='docs', blank=True, null=True)
     file5 = models.FileField(upload_to='docs', blank=True, null=True)
     file6 = models.FileField(upload_to='docs', blank=True, null=True)
-
+    mapdraw = models.ImageField(upload_to='images', blank=True, null=True)
 
     class Meta:
         ordering = ['-pubdate']
@@ -59,6 +59,7 @@ class Service(models.Model):
     image4 = models.ImageField(upload_to='images', blank=True, null=True)
     image5 = models.ImageField(upload_to='images', blank=True, null=True)
     image6 = models.ImageField(upload_to='images', blank=True, null=True)
+    gallery = models.BooleanField(default=False)  # czy wyświetlić obrazki?
 
     class Meta:
         ordering = ['-pubdate']
